@@ -1,0 +1,39 @@
+\hypertarget{_application_8h_source}{}\doxysection{Application.\+h}
+\label{_application_8h_source}\index{E:/Graphics Applications/meshViewer/src/Application.h@{E:/Graphics Applications/meshViewer/src/Application.h}}
+\mbox{\hyperlink{_application_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_im_gui_widgets_8h}{widgets/ImGuiWidgets.h}}"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_scene_8h}{scene/Scene.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_log_8h}{tools/Log.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_application}{Application}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_application}{Application}}\& \mbox{\hyperlink{class_application_ac98056c537f0d8717e9a6cb979e0e78c}{getApplication}}() \{ \textcolor{keywordflow}{return} *s\_application; \}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_application_aebb6d1a7983d8d23368b5b34461111ee}{init}}();\textcolor{comment}{//apply configuration}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_application_a68965449404743bf1add056784d6cf81}{run}}();\textcolor{comment}{//run loop}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_application_a5a7dcf61b6701a2b2665c78e4e074e73}{close}}();\textcolor{comment}{//close event}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{//events}}
+\DoxyCodeLine{24     \textcolor{comment}{//click position}}
+\DoxyCodeLine{25     \textcolor{comment}{//keyboard btn/mouse btn pressed (Alt +S, Ctrl+Shift+S), etc.}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28     \textcolor{keyword}{static} \mbox{\hyperlink{class_application}{Application}} *s\_application;}
+\DoxyCodeLine{29     std::vector<ImGuiPanel> panels; \textcolor{comment}{//a list of all the panels}}
+\DoxyCodeLine{30     std::vector<Scene> scenes; \textcolor{comment}{//there can be multiple 3Dscenes, such as view mode/ cloth simulation}}
+\DoxyCodeLine{31     GLFWwindow *window;}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{//jSON scene serializer and deserializer}}
+\DoxyCodeLine{36 \textcolor{comment}{//template <typename T, typename Class>}}
+\DoxyCodeLine{37 \textcolor{comment}{//inline void serialize(T obj) \{\}}}
+\DoxyCodeLine{38 \textcolor{comment}{//inline void deserialize(T obj) \{\}}}
+
+\end{DoxyCode}

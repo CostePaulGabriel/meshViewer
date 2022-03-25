@@ -1,0 +1,74 @@
+\hypertarget{class_mesh}{}\doxysection{Mesh Class Reference}
+\label{class_mesh}\index{Mesh@{Mesh}}
+
+
+Some example here\+: \href{https://learnopengl.com/Model-Loading/Mesh}{\texttt{ https\+://learnopengl.\+com/\+Model-\/\+Loading/\+Mesh}}. A class that contains all 3d model components -\/! Note that a 3d Model has the fallowing coordinates\+: -\/local coordinates relative to the object origin (which can be in center but is not always the case \mbox{[}ex. Blender global coord, view coord., normal, etc.\mbox{]}) -\/word coordinates origin is at the center of the world -\/view coordinates are the camera coordinates -\/screen coordinates can be viewed on the screen.  
+
+
+
+
+{\ttfamily \#include $<$Mesh.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
+\item 
+\mbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{$\sim$\+Mesh}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_mesh_a9b70aef51f7811bda3b1122c472097e5}{model\+Matrix}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_mesh_a94276d48191f07399ad3080aa3d13340}{view\+Matrix}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_mesh_a1f74f85a8b5c4c0c2b466fc18c269261}{projection\+Matrix}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Some example here\+: \href{https://learnopengl.com/Model-Loading/Mesh}{\texttt{ https\+://learnopengl.\+com/\+Model-\/\+Loading/\+Mesh}}. A class that contains all 3d model components -\/! Note that a 3d Model has the fallowing coordinates\+: -\/local coordinates relative to the object origin (which can be in center but is not always the case \mbox{[}ex. Blender global coord, view coord., normal, etc.\mbox{]}) -\/word coordinates origin is at the center of the world -\/view coordinates are the camera coordinates -\/screen coordinates can be viewed on the screen. 
+
+Transposing the object between these views is done by transformation matrices model matrix (local coord transposed to world coord) view matrix (world coord transposed to view coord) projection matrix (view coordinates transposed to clip coordinates) from clip coordinates (camera perspective) the transpose to screen view is done automatically matrices are 4d 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mesh_a2af137f1571af89172b9c102302c416b}\label{class_mesh_a2af137f1571af89172b9c102302c416b}} 
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Mesh()}{Mesh()}}
+{\footnotesize\ttfamily Mesh\+::\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}\label{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}} 
+\index{Mesh@{Mesh}!````~Mesh@{$\sim$Mesh}}
+\index{````~Mesh@{$\sim$Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{$\sim$Mesh()}{~Mesh()}}
+{\footnotesize\ttfamily Mesh\+::$\sim$\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_mesh_a9b70aef51f7811bda3b1122c472097e5}\label{class_mesh_a9b70aef51f7811bda3b1122c472097e5}} 
+\index{Mesh@{Mesh}!modelMatrix@{modelMatrix}}
+\index{modelMatrix@{modelMatrix}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{modelMatrix}{modelMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 Mesh\+::model\+Matrix}
+
+\mbox{\Hypertarget{class_mesh_a1f74f85a8b5c4c0c2b466fc18c269261}\label{class_mesh_a1f74f85a8b5c4c0c2b466fc18c269261}} 
+\index{Mesh@{Mesh}!projectionMatrix@{projectionMatrix}}
+\index{projectionMatrix@{projectionMatrix}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{projectionMatrix}{projectionMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 Mesh\+::projection\+Matrix}
+
+\mbox{\Hypertarget{class_mesh_a94276d48191f07399ad3080aa3d13340}\label{class_mesh_a94276d48191f07399ad3080aa3d13340}} 
+\index{Mesh@{Mesh}!viewMatrix@{viewMatrix}}
+\index{viewMatrix@{viewMatrix}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{viewMatrix}{viewMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 Mesh\+::view\+Matrix}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+E\+:/\+Graphics Applications/mesh\+Viewer/src/scene/\mbox{\hyperlink{_mesh_8h}{Mesh.\+h}}\item 
+E\+:/\+Graphics Applications/mesh\+Viewer/src/scene/\mbox{\hyperlink{_mesh_8cpp}{Mesh.\+cpp}}\end{DoxyCompactItemize}

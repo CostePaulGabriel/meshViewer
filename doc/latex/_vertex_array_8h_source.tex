@@ -1,0 +1,45 @@
+\hypertarget{_vertex_array_8h_source}{}\doxysection{Vertex\+Array.\+h}
+\label{_vertex_array_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/VertexArray.h@{E:/Graphics Applications/meshViewer/src/scene/VertexArray.h}}
+\mbox{\hyperlink{_vertex_array_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_vertex_buffer_8h}{VertexBuffer.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{/*@brief:}}
+\DoxyCodeLine{7 \textcolor{comment}{    A "{}vertex array object"{} has multiple "{}vertex buffer object"{} components, each vertex stores data such as coordinates, UV, }}
+\DoxyCodeLine{8 \textcolor{comment}{    texture, normal(tangent to the point location). }}
+\DoxyCodeLine{9 \textcolor{comment}{    To link the vertex buffer objects to the vertex array object I call the linkVertexArray function.}}
+\DoxyCodeLine{10 \textcolor{comment}{    The vertex array object data are stored by the CPU in the RAM memory and will be loaded in the GPU VRAM by calling the "{}bind()"{} function.}}
+\DoxyCodeLine{11 \textcolor{comment}{*/}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_vertex_array}{VertexArray}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_vertex_array_ab8a2dcce9698f96dac5f9a19c6979d03}{VertexArray}}();}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_vertex_array_a82597eb9daba5ad66dd3cf898e159a95}{\string~VertexArray}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{/*@brief: A function that links the VertexBufferObject to the VertexArray.}}
+\DoxyCodeLine{20 \textcolor{comment}{    * More details here: https://www.khronos.org/registry/OpenGL-\/Refpages/gl4/html/glVertexAttribPointer.xhtml.}}
+\DoxyCodeLine{21 \textcolor{comment}{    * @params: vertexBuff -\/ the linked buffer}}
+\DoxyCodeLine{22 \textcolor{comment}{    * @params: layout -\/ an index of the current vertex array}}
+\DoxyCodeLine{23 \textcolor{comment}{    * @params: vboCount -\/ number of vertex buffers}}
+\DoxyCodeLine{24 \textcolor{comment}{    * @params: type -\/ the type of the array components}}
+\DoxyCodeLine{25 \textcolor{comment}{    * @params: stride -\/ byte offset between consecutive generic vertex attributes}}
+\DoxyCodeLine{26 \textcolor{comment}{    * @params: offset -\/ Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL\_ARRAY\_BUFFER target, default is 0}}
+\DoxyCodeLine{27 \textcolor{comment}{    * @params: normalized -\/ specifies whether fixed-\/point data values should be normalized (GL\_TRUE) or converted directly as fixed-\/point values (GL\_FALSE) }}
+\DoxyCodeLine{28 \textcolor{comment}{    */}}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_array_a6595b5119104d3e4141b0063d79860f3}{linkVertexArray}}(\mbox{\hyperlink{class_vertex_buffer}{VertexBuffer}}\& vertexBuff, GLuint layout, GLuint vboCount, GLenum type, GLsizeiptr stride, \textcolor{keywordtype}{void}* offset, GLboolean normalized = GL\_FALSE);}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_array_a531af8f1987f7f5ccf2edaf7ed50edfd}{bind}}();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_array_a77a3e91543e258b91ea48bdee31c4335}{unbind}}();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_array_ad3b6d2abfe00b4588537eefdd7d5cbb6}{deleteVertexArray}}();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{inline} GLuint \mbox{\hyperlink{class_vertex_array_a1c8f1edeeb5d9ce69ce491a012e59bf5}{getVertexArray}}() \{ \textcolor{keywordflow}{return} m\_vertexArray; \}}
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37     GLuint m\_vertexArray;}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+
+\end{DoxyCode}

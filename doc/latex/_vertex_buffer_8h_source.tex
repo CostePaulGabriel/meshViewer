@@ -1,0 +1,42 @@
+\hypertarget{_vertex_buffer_8h_source}{}\doxysection{Vertex\+Buffer.\+h}
+\label{_vertex_buffer_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/VertexBuffer.h@{E:/Graphics Applications/meshViewer/src/scene/VertexBuffer.h}}
+\mbox{\hyperlink{_vertex_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// https://en.wikipedia.org/wiki/Vertex\_buffer\_object , https://www.khronos.org/opengl/wiki/Vertex\_Specification}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{/*@brief:}}
+\DoxyCodeLine{10 \textcolor{comment}{    A vertex buffer object is a list of vertices that will be linked with the vertex array object to create an OpenGl drawing call.}}
+\DoxyCodeLine{11 \textcolor{comment}{    A vertex buffer should store vertex coordinates, color, UVtexture, normal(tangent on that point) }}
+\DoxyCodeLine{12 \textcolor{comment}{*/}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_vertex}{Vertex}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     glm::vec3 coordinates;}
+\DoxyCodeLine{17     glm::vec2 UVtexture;}
+\DoxyCodeLine{18     glm::vec3 color;}
+\DoxyCodeLine{19     glm::vec3 normal;}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_vertex_buffer}{VertexBuffer}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_vertex_buffer_aee95476f62901b94455ffd2e7f33a966}{VertexBuffer}}(std::vector<Vertex>\& vertices);}
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_vertex_buffer_a5216726fdd43b2ae8e1439e347717fdd}{\string~VertexBuffer}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_buffer_a2af46cc2ddf65613c8173651d773a5a1}{bind}}();}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_buffer_a2e2968f0642976b6b18cbe9a8f012054}{unbind}}();}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vertex_buffer_afc99f8428cf4780e0147f3d5c0c12ba3}{deleteVertexBuffer}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{inline} GLuint \mbox{\hyperlink{class_vertex_buffer_ad56f21e00e65ab58174b0ed545dfc897}{getVertexBuffer}}() \{ \textcolor{keywordflow}{return} m\_vertexBuffer; \}}
+\DoxyCodeLine{33 \textcolor{keyword}{private}:}
+\DoxyCodeLine{34     GLuint m\_vertexBuffer;  \textcolor{comment}{//index of VBO}}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+
+\end{DoxyCode}

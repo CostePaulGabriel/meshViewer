@@ -1,0 +1,49 @@
+\hypertarget{_abstract_widgets_8h_source}{}\doxysection{Abstract\+Widgets.\+h}
+\label{_abstract_widgets_8h_source}\index{E:/Graphics Applications/meshViewer/src/widgets/AbstractWidgets.h@{E:/Graphics Applications/meshViewer/src/widgets/AbstractWidgets.h}}
+\mbox{\hyperlink{_abstract_widgets_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{/*@brief: }}
+\DoxyCodeLine{7 \textcolor{comment}{    This class contains all the base class (abstract classes) for derived widgets, such as windows, panels, buttons,etc.}}
+\DoxyCodeLine{8 \textcolor{comment}{    Note: An abstract class must define a virtual destructor, otherwise the derived objects won`t get destroyed.}}
+\DoxyCodeLine{9 \textcolor{comment}{*/}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{//predefinition}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_panel}{Panel}};}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_window}{Window}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_panel}{Panel}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_panel_a977ca8ff101666a0336945dc12a44144}{Panel}}();}
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_panel_a7f9c2e03d792b7763150f29d0f8043e8}{\string~Panel}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} m\_id;\textcolor{comment}{//panel index}}
+\DoxyCodeLine{23     std::vector<Window> container; \textcolor{comment}{//a dynamic list that holds all the windows from a panel}}
+\DoxyCodeLine{24 \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{class_window}{Window}}}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_window_a0f8afd6ee05aaa710dc59d4327807b20}{Window}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* title);}
+\DoxyCodeLine{30     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_window_ab44b1bd085cdac918bf3596df2021688}{\string~Window}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_a989c5c13a096fcd11d6d16af5f03fcfb}{onAttach}}(\mbox{\hyperlink{class_window}{Window}}\& window); \textcolor{comment}{//A window was attached to a panel, push it back on }}
+\DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_ac16d20458ca54c1110b3ffe7c986f6e5}{onDetach}}(\mbox{\hyperlink{class_window}{Window}}\& window); \textcolor{comment}{//A window was removed from a panel, remove it from container}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_window_aae9675c32d443fb13710e46b7df033e8}{getId}}() \{ \textcolor{keywordflow}{return} m\_id; \}}
+\DoxyCodeLine{36     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_window_afaa8fe0d4a1848c0ddaf3a54a814ab6f}{getTitle}}() \{ \textcolor{keywordflow}{return} c\_title; \}}
+\DoxyCodeLine{37 \textcolor{keyword}{private}:}
+\DoxyCodeLine{38     \textcolor{keyword}{const} std::string c\_title;\textcolor{comment}{//window title}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} m\_id; \textcolor{comment}{//window identifier, this will change when window is dragged, destroyed, added in a new pannel or detached}}
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+
+\end{DoxyCode}

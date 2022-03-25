@@ -1,0 +1,35 @@
+\hypertarget{_texture_8h_source}{}\doxysection{Texture.\+h}
+\label{_texture_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/Texture.h@{E:/Graphics Applications/meshViewer/src/scene/Texture.h}}
+\mbox{\hyperlink{_texture_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include<glad/glad.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define STB\_IMAGE\_IMPLEMENTATION}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include<stb/stb\_image.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{_shader_8h}{Shader.h}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{/*}}
+\DoxyCodeLine{9 \textcolor{comment}{* @brief: Texture class will represent an image in pixel coordinates that can be mapped onto a 3D model.}}
+\DoxyCodeLine{10 \textcolor{comment}{*/}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_texture}{Texture}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_texture_afdbeb72c9d02c2d278b019b7b6320905}{Texture}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* image, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* texType, GLuint slot);}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\string~Texture}}();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{comment}{// Assigns a texture unit to a texture}}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_texture_af4a7f134c553ea9ecd4c5144f6bfeabb}{texUnit}}(\mbox{\hyperlink{class_shader}{Shader}}\& shader, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* uniform, GLuint unit);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_texture_a3840dc7429982ffaddeafc8d62345b5d}{bind}}();}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_texture_a8480eed7ed703a937c3e6ab528f559bd}{unbind}}();}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_texture_a19b563e8e413f59117f0fefb6a67ca89}{deleteTexture}}();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{private}:}
+\DoxyCodeLine{26     GLuint m\_id;}
+\DoxyCodeLine{27     GLuint m\_unit;}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* m\_type;}
+\DoxyCodeLine{29 \};}
+
+\end{DoxyCode}

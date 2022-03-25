@@ -1,0 +1,53 @@
+\hypertarget{_event_8h}{}\doxysection{E\+:/\+Graphics Applications/mesh\+Viewer/src/events/\+Event.h File Reference}
+\label{_event_8h}\index{E:/Graphics Applications/meshViewer/src/events/Event.h@{E:/Graphics Applications/meshViewer/src/events/Event.h}}
+{\ttfamily \#include \char`\"{}events/\+Event.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_event}{Event}}
+\item 
+class \mbox{\hyperlink{class_event_dispatcher}{Event\+Dispatcher}}
+\begin{DoxyCompactList}\small\item\em An event dispatcher is used to filter the events and execute current event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369f}{Window\+Events}} \{ \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa999715500a423f0bd9169c6a8af370cc}{WINDOW\+\_\+\+RESIZE}}
+, \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa77d21000ac021dd9cf0ea1d50f2f03c6}{WINDOW\+\_\+\+MINIMIZE}}
+, \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fac321ea5e0f35a276a62bc1c0b9d0566a}{WINDOW\+\_\+\+MAXIMIZE}}
+, \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fab505fed6e98dcb74312ab9c3d93673d6}{WINDOW\+\_\+\+CLOSE}}
+ \}
+\begin{DoxyCompactList}\small\item\em This is a multithreaded event system, where each event is queued in a list if there are no free threads, while the other events are still in process, when an event has finished, the thread is freed and will look up in the queue and execute the next event. \href{https://stackoverflow.com/questions/20689502/multithreaded-event-system}{\texttt{ https\+://stackoverflow.\+com/questions/20689502/multithreaded-\/event-\/system}}. Dispather Threaded \mbox{\hyperlink{class_event}{Event}} System \+: \href{https://www.cppstories.com/2019/12/threading-loopers-cpp17/}{\texttt{ https\+://www.\+cppstories.\+com/2019/12/threading-\/loopers-\/cpp17/}} , \href{https://embeddedartistry.com/blog/2017/02/08/implementing-an-asynchronous-dispatch-queue/}{\texttt{ https\+://embeddedartistry.\+com/blog/2017/02/08/implementing-\/an-\/asynchronous-\/dispatch-\/queue/}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369f}\label{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369f}} 
+\index{Event.h@{Event.h}!WindowEvents@{WindowEvents}}
+\index{WindowEvents@{WindowEvents}!Event.h@{Event.h}}
+\doxysubsubsection{\texorpdfstring{WindowEvents}{WindowEvents}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369f}{Window\+Events}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+This is a multithreaded event system, where each event is queued in a list if there are no free threads, while the other events are still in process, when an event has finished, the thread is freed and will look up in the queue and execute the next event. \href{https://stackoverflow.com/questions/20689502/multithreaded-event-system}{\texttt{ https\+://stackoverflow.\+com/questions/20689502/multithreaded-\/event-\/system}}. Dispather Threaded \mbox{\hyperlink{class_event}{Event}} System \+: \href{https://www.cppstories.com/2019/12/threading-loopers-cpp17/}{\texttt{ https\+://www.\+cppstories.\+com/2019/12/threading-\/loopers-\/cpp17/}} , \href{https://embeddedartistry.com/blog/2017/02/08/implementing-an-asynchronous-dispatch-queue/}{\texttt{ https\+://embeddedartistry.\+com/blog/2017/02/08/implementing-\/an-\/asynchronous-\/dispatch-\/queue/}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOW\_RESIZE@{WINDOW\_RESIZE}!Event.h@{Event.h}}\index{Event.h@{Event.h}!WINDOW\_RESIZE@{WINDOW\_RESIZE}}}\mbox{\Hypertarget{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa999715500a423f0bd9169c6a8af370cc}\label{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa999715500a423f0bd9169c6a8af370cc}} 
+WINDOW\+\_\+\+RESIZE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOW\_MINIMIZE@{WINDOW\_MINIMIZE}!Event.h@{Event.h}}\index{Event.h@{Event.h}!WINDOW\_MINIMIZE@{WINDOW\_MINIMIZE}}}\mbox{\Hypertarget{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa77d21000ac021dd9cf0ea1d50f2f03c6}\label{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fa77d21000ac021dd9cf0ea1d50f2f03c6}} 
+WINDOW\+\_\+\+MINIMIZE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOW\_MAXIMIZE@{WINDOW\_MAXIMIZE}!Event.h@{Event.h}}\index{Event.h@{Event.h}!WINDOW\_MAXIMIZE@{WINDOW\_MAXIMIZE}}}\mbox{\Hypertarget{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fac321ea5e0f35a276a62bc1c0b9d0566a}\label{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fac321ea5e0f35a276a62bc1c0b9d0566a}} 
+WINDOW\+\_\+\+MAXIMIZE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOW\_CLOSE@{WINDOW\_CLOSE}!Event.h@{Event.h}}\index{Event.h@{Event.h}!WINDOW\_CLOSE@{WINDOW\_CLOSE}}}\mbox{\Hypertarget{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fab505fed6e98dcb74312ab9c3d93673d6}\label{_event_8h_ae8bd9c32525d2d67e9ad8714ff60369fab505fed6e98dcb74312ab9c3d93673d6}} 
+WINDOW\+\_\+\+CLOSE&\\
+\hline
+
+\end{DoxyEnumFields}

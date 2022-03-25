@@ -1,0 +1,41 @@
+\hypertarget{_scene_8h_source}{}\doxysection{Scene.\+h}
+\label{_scene_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/Scene.h@{E:/Graphics Applications/meshViewer/src/scene/Scene.h}}
+\mbox{\hyperlink{_scene_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_abstract_widgets_8h}{widgets/AbstractWidgets.h}}"{}}}
+\DoxyCodeLine{4 \textcolor{comment}{//\#include "{}Camera.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_shader_8h}{Shader.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_mesh_8h}{Mesh.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_key_codes_8h}{events/KeyCodes.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{comment}{/*@brief: The class Scene represents the 3D scene rendered inside a imGui widget.}}
+\DoxyCodeLine{9 \textcolor{comment}{*   This will implement all the widgets from the ImGui3D base class.}}
+\DoxyCodeLine{10 \textcolor{comment}{*   This scene contains a list of 3D objects represented by the mesh class.}}
+\DoxyCodeLine{11 \textcolor{comment}{*   Events: select object, scale object, rotate object.}}
+\DoxyCodeLine{12 \textcolor{comment}{*   A scene can also be serialized and deserialized in a custom format, I choose the jSON format, more here https://isocpp.org/wiki/faq/serialization.}}
+\DoxyCodeLine{13 \textcolor{comment}{*/}}
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_scene}{Scene}} \textcolor{comment}{// : public ImGui3D}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_a8797bd42789ccea7a0dd0f7f3b291a21}{addMesh}}(\mbox{\hyperlink{class_mesh}{Mesh}}\& mesh); \textcolor{comment}{//add a 3d object in the scene}}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_a961d426ffb269cc0930d1df2f6e1c44f}{deleteMesh}}(\mbox{\hyperlink{class_mesh}{Mesh}}\& mesh);\textcolor{comment}{//remove a 3d object from scene}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_a5c71b8056b4169f40c259d46f1097983}{onSelected}}(\mbox{\hyperlink{class_mesh}{Mesh}}\& mesh);\textcolor{comment}{//select an object}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_af8f5fd301fbdfc5d9cb7e61041bd30e2}{onDeselected}}(\mbox{\hyperlink{class_mesh}{Mesh}}\& mesh);\textcolor{comment}{//deselect an object}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_ae5a13059aa6f308a2fba68ab661ff03b}{enableGrid}}();\textcolor{comment}{//enable a 3D grid}}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_ab0008c074d57027fedf68d859491cdef}{disableGrid}}();\textcolor{comment}{//disable the 3D grid}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_aab0913cd0b66671070fdafeb3fc45457}{onKeyPressed}}(\mbox{\hyperlink{_key_codes_8h_a7885f47644a0388f981f416fa20389b2}{KeyCode}} key);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_a6f0fe8cc813a86f21193a25766b165fa}{onKeyReleased}}(\mbox{\hyperlink{_key_codes_8h_a7885f47644a0388f981f416fa20389b2}{KeyCode}} key);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_scene_a294ea11fd205ac2591044a668eec2082}{onScroll}}(\mbox{\hyperlink{_key_codes_8h_a7885f47644a0388f981f416fa20389b2}{KeyCode}} key);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31     \textcolor{comment}{//some gui widgets id there are object available}}
+\DoxyCodeLine{32     \textcolor{comment}{//some transform widgets(sliders, buttons that enables the grid)}}
+\DoxyCodeLine{33     std::vector<Mesh> meshes; \textcolor{comment}{//a list of 3D models}}
+\DoxyCodeLine{34 \};}
+\DoxyCodeLine{35 }
+
+\end{DoxyCode}

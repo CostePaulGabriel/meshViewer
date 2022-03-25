@@ -1,0 +1,44 @@
+\hypertarget{_shader_8h_source}{}\doxysection{Shader.\+h}
+\label{_shader_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/Shader.h@{E:/Graphics Applications/meshViewer/src/scene/Shader.h}}
+\mbox{\hyperlink{_shader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <cerrno>} \textcolor{comment}{//for error debugging}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*@brief:}}
+\DoxyCodeLine{11 \textcolor{comment}{    Shaders are OpenGl programs that allow the GPU to perform tasks such as: colors, shading, lighting, special effects.}}
+\DoxyCodeLine{12 \textcolor{comment}{    Shader class will read, activate or deactivate an OpenGl shader program written in openGl shading language(glsl), }}
+\DoxyCodeLine{13 \textcolor{comment}{    note that Shader programs run only on GPU.}}
+\DoxyCodeLine{14 \textcolor{comment}{    There are two important shaders located in this program "{}shaders"{} folder: "{}vertex shader"{} and "{}fragment shader"{}.}}
+\DoxyCodeLine{15 \textcolor{comment}{        The "{}vertex shader"{} will take as input a vertex attribute, known as vertex array, loads the attribute in the glsl program, compile it and outputs }}
+\DoxyCodeLine{16 \textcolor{comment}{    the verticies on the screen. Note that this shader runs once per vertex.}}
+\DoxyCodeLine{17 \textcolor{comment}{        The "{}fragment shader"{} will load a texture, compile it, and outputs the graphic primitives pixels color on the screen. }}
+\DoxyCodeLine{18 \textcolor{comment}{    Note that this shader runs once per rendered pixel.}}
+\DoxyCodeLine{19 \textcolor{comment}{*/}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_shader}{Shader}} }
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_shader_adbb25913a58f46d072ba388940433916}{Shader}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* vertexFile, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fragmentFile);}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_shader_aff01df87e8a102f270b5b135a295e59d}{\string~Shader}}();}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{/*@brief: Read shader file contained and convert it to binary. */}}
+\DoxyCodeLine{28     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_shader_a41818820fe78326e5231bd896c2b479a}{readShaderFile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fileName);}
+\DoxyCodeLine{29     \textcolor{comment}{/*@brief: Make current shader active. */}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shader_a8eeb348898094bde1584b1d8e72ecd79}{activateShader}}();}
+\DoxyCodeLine{31     \textcolor{comment}{/*@brief: Delete the current shader. */}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shader_ada1a50480f9d9a2e7aed86fb96467ab2}{deleteShader}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keyword}{inline} GLuint \mbox{\hyperlink{class_shader_ae8c46acaa95a78fe6c66ff3cc2feaae4}{getShader}}() \{ \textcolor{keywordflow}{return} m\_shader; \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37     GLuint m\_shader;}
+\DoxyCodeLine{38 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,32 @@
+\hypertarget{_element_buffer_8h_source}{}\doxysection{Element\+Buffer.\+h}
+\label{_element_buffer_8h_source}\index{E:/Graphics Applications/meshViewer/src/scene/ElementBuffer.h@{E:/Graphics Applications/meshViewer/src/scene/ElementBuffer.h}}
+\mbox{\hyperlink{_element_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{/* More about indexing vertex buffers here: http://www.opengl-\/tutorial.org/intermediate-\/tutorials/tutorial-\/9-\/vbo-\/indexing/.}}
+\DoxyCodeLine{7 \textcolor{comment}{* @brief:}}
+\DoxyCodeLine{8 \textcolor{comment}{* Since now, I used the vertex buffer to generate vertices without checking if the vertices were duplicated when they form a triangle.}}
+\DoxyCodeLine{9 \textcolor{comment}{* To solve this problem I created the ElementBuffer class which will filter the vertices in a way that there will never exist duplicates.}}
+\DoxyCodeLine{10 \textcolor{comment}{* This process is done by indexing the VertexBufferObject.}}
+\DoxyCodeLine{11 \textcolor{comment}{*/}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_element_buffer}{ElementBuffer}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_element_buffer_a3ac7c5f65bac036a8ef28c5a472d4e47}{ElementBuffer}}(std::vector<GLuint>\& indices);}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_element_buffer_a83223c157176087aef07f53290c37eca}{\string~ElementBuffer}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_element_buffer_a56ff556214bacbc0a8339a066cb63c6c}{bind}}();}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_element_buffer_a0cdef2e48cc256d039ca43b744b10ecc}{unbind}}();}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_element_buffer_ab8506efbceab4eb94b4046fc0c7cafa5}{deleteElemBuffer}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keyword}{inline} GLuint \mbox{\hyperlink{class_element_buffer_abe0b0e35119b6d17f3717d97c0a0163a}{getElemBuffer}}() \{ \textcolor{keywordflow}{return} m\_elemBuffer; \}}
+\DoxyCodeLine{24 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25     GLuint m\_elemBuffer;}
+\DoxyCodeLine{26 \};}
+
+\end{DoxyCode}
