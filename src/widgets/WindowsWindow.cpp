@@ -1,5 +1,4 @@
 #include "WindowsWindow.h"
-#include <iostream>
 #include "utilis/MessageBox.h"
 
 WindowsWindow::WindowsWindow(const std::string& title)
@@ -43,6 +42,12 @@ WindowsWindow::WindowsWindow(const std::string& title)
 	//setup for glfwWindow to receive callbacks (More about callbacks: https://stackoverflow.com/questions/29356783/glfwsetcursorposcallback-to-function-in-another-class)
 	glfwSetWindowUserPointer(mGLFWwindow, this);
 
+	//Window frageBuffer resize callback
+	glfwSetFramebufferSizeCallback(mGLFWwindow, [](GLFWwindow* window, int width, int height) 
+	{
+			glViewport(0, 0, width, height);
+	});
+
 	//Window resize callback
 	glfwSetWindowSizeCallback(mGLFWwindow, [](GLFWwindow* window, int width, int height)
 	{
@@ -61,9 +66,13 @@ WindowsWindow::WindowsWindow(const std::string& title)
 	{
 		if (WindowsWindow* windowControls = static_cast<WindowsWindow*>(glfwGetWindowUserPointer(window)))
 		{
-			WinMessageBox exitMsg(nullptr, std::string("Scene was not saved, are you sure you want to exit the application?\n").c_str(), WinMessageBox::INFO);
-			//response: YES = 6, NO = 7
-			(exitMsg.exec() == 7) ? glfwSetWindowShouldClose(window, GL_FALSE) : glfwSetWindowShouldClose(window, GL_TRUE);
+			if (!windowControls->safeClose)
+			{
+				WinMessageBox exitMsg(nullptr, std::string("Scene was not saved, are you sure you want to exit the application?\n").c_str(), 
+					WinMessageBox::INFO);
+				//response: YES = 6, NO = 7
+				(exitMsg.exec() == 7) ? glfwSetWindowShouldClose(window, GL_FALSE) : glfwSetWindowShouldClose(window, GL_TRUE);
+			}
 		}
 	});
 
@@ -165,16 +174,4 @@ WindowsWindow::~WindowsWindow()
 {
 	glfwDestroyWindow(mGLFWwindow);
 	glfwTerminate();
-}
-
-void WindowsWindow::onClose()
-{
-}
-
-void WindowsWindow::onResize(uint16_t height, uint16_t width)
-{
-}
-
-void WindowsWindow::onUpdate()
-{
 }

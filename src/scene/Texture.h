@@ -20,6 +20,10 @@ public:
 	// Assigns a texture unit to a texture
 	void texUnit(Shader& shader, const char* uniform, GLuint unit);
 
+	//from IMGUI example
+	static bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height);
+
+
 	void bind();
 	void unbind();
 	void deleteTexture();

@@ -15,6 +15,10 @@ using namespace sigslot;
 	Thread safe means that while the event is processed by a thread, no other thread will try to get his resource and modify it, 
 	if it does, this will result in a deadlock or unexpected behaviour.
 	To avoid those problems, each thread will lock the resource using an std::mutex and unlock it when the processing has been finished.
+
+	Event class is a base class for all the derived Events, contains an Enum that helps to differentiate between events, and a getter for the eventType.
+	MouseEvents, KeyEvents, WindowEvents and UIEvents are constructed when an event occurs.
+	Then that event is sent with a signal to the Application class slot, that decide what to do with that event.
 */
 
 //object connect & pointer connect
@@ -25,13 +29,12 @@ struct Event
 {
 	enum class EventType : uint32_t
 	{
-		WindowResized, WindowMaximized, WindowMinimized, WindowClosed,		//Window events
-		MouseMoved, MouseScrolled, MouseButtonPressed, MouseButtonReleased, //Mouse events
-		KeyPressed, KeyReleased, KeyTyped, KeyRepeat,						//Key events
-		ApplicationStart, ApplicationExit, UIEvent,							//Application events
-		MeshLoaded,				/*Add the object in ui pannel*/				//Mesh events
-		MeshDeleted,			/*Remove the mesh from pannel*/
-		MeshRotated, MeshScaled	/*Update the ui and the scene*/				
+		WindowResized, WindowMaximized, WindowMinimized, WindowClosed,			//Window events
+		MouseMoved, MouseScrolled, MouseButtonPressed, MouseButtonReleased,		//Mouse events
+		KeyPressed, KeyReleased, KeyTyped, KeyRepeat,							//Key events
+		SaveScene,	LoadScene, 													//Scene events
+		MeshLoaded,	MeshDeleted, MeshTransformed, MeshSelected, MeshDeselected, //Mesh events
+		TextureChanged			
 	};
 	Event() = default;
 	virtual ~Event() = default;
@@ -119,7 +122,6 @@ public:
 		case EventType::WindowResized:   { mType = type; mWidth = width; mHeight = height; }  break;
 		case EventType::WindowMaximized: { mType = type; mWidth = width; mHeight = height; }  break;
 		case EventType::WindowMinimized: { mType = type; mWidth = width; mHeight = height; }  break;
-		//case EventType::WindowClosed:	 { mType = type; closed = true; }	break;
 		default: break;
 		}
 	}
@@ -131,5 +133,46 @@ private:
 	EventType mType;
 	uint16_t mWidth;
 	uint16_t mHeight;
-	//bool closed = false;
+};
+
+class UIEvent : public Event
+{
+public:
+	//Construct an Event that contains the path to a new mesh/texture or scene
+	explicit UIEvent(const EventType type, const std::string path = "")
+	{ 
+		switch (type)
+		{
+		case EventType::MeshLoaded: {mType = type; mNewMeshPath = path;} break; 
+		case EventType::MeshSelected: {mType = type; mSelectedMesh = path; } break;
+		case EventType::MeshDeselected: {mType = type; mSelectedMesh = ""; } break;
+		case EventType::TextureChanged: {mType = type; mNewTexturePath = path;} break; 
+		case EventType::SaveScene : {mType = type; mScenePath = path; } break;
+		case EventType::LoadScene : {mType = type; mScenePath = path; } break;
+		default: break;
+		}
+	};
+	explicit UIEvent(const EventType type, const std::vector<glm::vec3> meshTransforms)
+	{
+		//EventType::MeshTransformed
+		mType = type;
+		mMeshTransforms = meshTransforms;
+	};
+
+	virtual EventType getType() const override { return mType; }
+	const std::string& getMeshPath() const { return mNewMeshPath; }
+	const std::string& getScenePath() const { return mScenePath; }
+	const std::string& getTexturePath() const { return mNewTexturePath; }
+	const std::string& getSelectedMesh() const { return mSelectedMesh; }
+	
+	//< Returns the Transforms getTransforms()[0] = Location, getTransforms()[1] = Rotation, getTransforms()[2] = Scale.
+	const std::vector<glm::vec3>& getTransforms() const {return mMeshTransforms; } 
+	
+private:
+	EventType mType;
+	std::string mNewMeshPath;   //stores the path to a mesh (3D model)
+	std::string mNewTexturePath;//stores the path of the loaded texture
+	std::string mScenePath;		//Serialize/Deserialize the scene to/from path
+	std::string mSelectedMesh;  //selected mesh in the scene identifier
+	std::vector<glm::vec3> mMeshTransforms{}; //vector stores 3 elements (Location(x,y,z), Rotation (x,y,z), Scale(x,y,z))
 };

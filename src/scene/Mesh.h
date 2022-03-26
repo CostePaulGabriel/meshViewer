@@ -27,11 +27,14 @@ public:
 	explicit Mesh(std::vector<Vertex>& vertices, std::vector<int>& indices, std::vector<Texture>& textures);
 	~Mesh();
 
+	static void loadMeshFromFile(const std::string& path);
+
 private:
-	VertexArray vertexArr;
-	std::vector <Vertex> vertices;
-	std::vector <int> indices;
-	std::vector <Texture> textures;
+	std::string mMeshName;
+	VertexArray mVertexArr;
+	std::vector <Vertex> mVertices;
+	std::vector <int> mIndices;
+	std::vector <Texture> mTextures;
 };
 
 #endif

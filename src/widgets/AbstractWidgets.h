@@ -14,21 +14,9 @@
 */
 
 //predefinition
-class Layer;
 class Window;
 //class Camera;	
 //class Renderer;	
-
-class Layer
-{
-public:
-	explicit Layer(); //const std::string& title
-	virtual ~Layer() = default;
-
-	virtual void onAttach() = 0;
-	virtual void onDetach() = 0;
-	virtual void onEvent(Event& e) = 0;
-};
 
 class Window
 {
@@ -36,9 +24,10 @@ public:
 	explicit Window(const std::string& title);
 	virtual ~Window() = default;
 
-	virtual void onResize(uint16_t height, uint16_t width) = 0;
-	virtual void onUpdate() = 0;
-	virtual void onClose() = 0;
+	virtual void setVSync(bool state) = 0;
+	virtual GLFWwindow* getGLFWwindow() const = 0;
+	virtual uint16_t getWidth() const = 0;
+	virtual uint16_t getHeight() const = 0;
 };
 
 //class Camera 

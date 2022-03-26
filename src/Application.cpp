@@ -1,10 +1,13 @@
 #include "Application.h"
+#include "utilis/Log.h"
 #include "utilis/MessageBox.h"
+#include "utilis/FileDialog.h"
 
-Application* Application::s_application = nullptr;	//initialize as null
+Application* Application::sApplication = nullptr;	//initialize as null
 
 Application::Application(const std::string& title) :
-	window{ std::make_unique<WindowsWindow>(title)}	//give the windowsWindow the application title
+	mWindow{ std::make_unique<WindowsWindow>(title)}, //give the windowsWindow the application title
+	mainScene{new ui::Scene(mWindow.get())}	
 {	
 	Log log("Application Started!");
 	
@@ -18,44 +21,34 @@ Application::Application(const std::string& title) :
 	//Receive events from window in multiple slots (multithreaded)
 	//QtConnect(window, WindowsWindow::windowSender, this, &Application::onEvent);
 	//window->windowSignal.connect(&Application::onSlot, this);	//this is without macro
-	PtrConnect(window, WindowsWindow::windowMouseEventSignal, this, &Application::onMouseEvent);
-	PtrConnect(window, WindowsWindow::windowKeyEventSignal, this, &Application::onKeyEvent);
-	PtrConnect(window, WindowsWindow::windowEventSignal, this, &Application::onWindowEvent);
-	
-	//more connects from UIEvents (after scene class is finished)
+	PtrConnect(mWindow, WindowsWindow::windowMouseEventSignal, this, &Application::onMouseEvent);
+	PtrConnect(mWindow, WindowsWindow::windowKeyEventSignal, this, &Application::onKeyEvent);
+	PtrConnect(mWindow, WindowsWindow::windowEventSignal, this, &Application::onWindowEvent);
+	PtrConnect(mainScene, ui::Scene::sceneEventSender, this, &Application::onUIEvent);
 }
 
 Application::~Application()
 {
 	Log log("Application ended!");
+	delete mainScene;
 }
 
 void Application::run()
-{
-	//make some arrays just for testing
-	
-	//pregatim shader, vertexbuffers, arraybuffers, indexbuffers(elementbuffers)	//aici se vor incarca 2 shadere default
-	Shader shader("resources/shaders/shader.vert", "resources/shaders/shader.frag");
+{	
+	//pregatim shader, vertexbuffers, arraybuffers, indexbuffers(elementbuffers)	
+	Shader shader("resources/shaders/shader.vert", "resources/shaders/shader.frag"); //aici se vor incarca 2 shadere default
 
-	//pregatire scena, editor
-	//Scene = new scene va fi in constructor
-	//aici va fi scene->config() care va seta culorile default si locatia
 
-	Scene* mainScene = new Scene(window.get());
-
-	while (!glfwWindowShouldClose(window->getGLFWwindow()))
+	while (!glfwWindowShouldClose(mWindow->getGLFWwindow()))
 	{
 		//clear buffers on each frame (2D & 3D)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//Draw the imgui
-		//Renderer::render(Material)...	//aici o sa fie adaugat un material la runtime
 		mainScene->onUpdate();	//aici o sa fie camera, mesh
-		//Editor->onUpdate();	aici o sa fie butoane
-		//Console->onUpdate();	aici un terminal simplu care va scrie un mesaj de demonstratie la eveniment sau etc
 
 		//update the window context
-		glfwSwapBuffers(window->getGLFWwindow());
+		glfwSwapBuffers(mWindow->getGLFWwindow());
 
 		//receive events from window
 		glfwPollEvents();
@@ -67,7 +60,7 @@ void Application::run()
 	ImGui::DestroyContext();
 
 	// Delete window before ending the program
-	glfwDestroyWindow(window->getGLFWwindow());
+	glfwDestroyWindow(mWindow->getGLFWwindow());
 	// Terminate GLFW before ending the program
 	glfwTerminate();
 }
@@ -76,21 +69,46 @@ void Application::onKeyEvent(KeyEvent& e)
 {
 	//check which key was pressed
 	//check the event type
-	if (e.getType() == KeyEvent::EventType::KeyPressed || e.getType() == KeyEvent::EventType::KeyTyped ||
-		e.getType() == KeyEvent::EventType::KeyRepeat)
+	if (e.getType() == KeyEvent::EventType::KeyPressed || e.getType() == KeyEvent::EventType::KeyTyped)
 	{
 		std::cout << "KeyPressedEvent " << "keyCode = [ " << e.getKeyPressed()<<" ]\n";
 	}
-
 }
 void Application::onMouseEvent(MouseEvent& e)
 {
 	//check is mouse scrooled inside imgui, then scroll the camera
 	if(e.getType() == MouseEvent::EventType::MouseMoved)
 		std::cout << "mouseMovedEvent " <<"[x = " << e.getPosition().x <<", y = "<<e.getPosition().y << "]\n";
+	if(e.getType() == MouseEvent::EventType::MouseButtonPressed)
+		std::cout << "mouseButtonPressedEvent " << "[ " << e.getBtnPressed() << " ]\n";
 }
 void Application::onWindowEvent(WindowEvent& e)
 {
 	//check if window resized and update the elements in the scene
 	std::cout << "Window resized: [w =" << e.getWidth() << " h =" << e.getHeight() << "]\n";
+}
+
+void Application::onUIEvent(UIEvent& e)
+{
+	switch (e.getType())
+	{
+	case UIEvent::EventType::LoadScene: 
+	{ std::cout << "File dialog: open file.\n";
+		FileDialog fileDialog; 
+		fileDialog.openFileDialog();
+
+		//when a scene is loaded reset the flag
+		mWindow->sceneSaved(false);
+	}
+		break;
+	case UIEvent::EventType::SaveScene:
+	{ std::cout << "File save scene: open file.\n";
+		FileDialog fileDialog;
+		fileDialog.saveFileDialog("");
+		//scene.serialize();
+		//scene.deserialize();
+		mWindow->sceneSaved(true);
+	}
+	break;
+	}
 }
